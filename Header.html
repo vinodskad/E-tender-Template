@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script> 
+$(document).ready(function() {
+	w3.includeHTML();
+	$('ul.nav li a').click(function(e) {
+		/* alert('$this');
+	    var $this = $(this);
+	    $this.parent().siblings().removeClass('active').end().addClass('active');
+	    e.preventDefault();
+	     */
+		var path = window.location.pathname.substring(1);
+		$('.nav>li>a[href="' + Home.html + '"]').parent().addClass('active');
+	});
+});</script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img alt="" src="images/Mahadiscom_Logo.png"></a>
+                <a href="javascript:void(0)" class="LoginLink LoginLinkMobile"><span class="glyphicon glyphicon-lock"></span> Login</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav  main-nav">
+                    <li class="active HomeLink"><a href="Home.html">Home</a></li>
+                    <li><a href="Tenders.html">Tenders</a></li>
+                    <li><a href="Bids.html">Bids</a></li>
+                    <li><a href="Profile.html">Profile</a></li>
+                    <li><a href="Help.html">Help</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="SiteMap.html">Site Map</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right sidenav">
+                    <li><a href="#"><span class="glyphicon glyphicon-exclamation-sign"></span>Disclaimer</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-calendar"></span>Calendar</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-download-alt"></span>Downloads</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Public Notices</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+                    <li><a href="Profile.html"><span class="glyphicon glyphicon-registration-mark"></span> Registration</a></li>
+                    <li><a href="javascript:void(0)" class="LoginLink"><span class="glyphicon glyphicon-lock"></span> Login</a></li>
+                </ul>
+                <div class="welcome"> <span class="glyphicon glyphicon-user" style="color:gray"></span> Welcome TestContract |<a href="">Logout</a></div>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

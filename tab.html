@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSECDL e-Tendering</title>
+    <meta name="description" content="Fullscreen Pageflip Layout with BookBlock" />
+    <meta name="keywords" content="fullscreen pageflip, booklet, layout, bookblock, jquery plugin, flipboard layout, sidebar menu" />
+    <meta name="author" content="Codrops" />
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+    <link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="css/Responsive.css">
+    <style>/**
+ * Responsive Bootstrap Tabs by @hayatbiralem
+ * 15 May 2015
+ */
+@media screen and (max-width: 479px) {
+  .nav-tabs-responsive > li {
+    display: none;
+    width: 23%;
+  }
+  .nav-tabs-responsive > li > a {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    width: 100%;
+    width: 100%;
+    text-align: center;
+    vertical-align: top;
+  }
+  .nav-tabs-responsive > li.active {
+    width: 54%;
+  }
+  .nav-tabs-responsive > li.active:first-child {
+    margin-left: 23%;
+  }
+  .nav-tabs-responsive > li.active, .nav-tabs-responsive > li.prev, .nav-tabs-responsive > li.next {
+    display: block;
+  }
+  .nav-tabs-responsive > li.prev, .nav-tabs-responsive > li.next {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  .nav-tabs-responsive > li.next > a, .nav-tabs-responsive > li.prev > a {
+    -webkit-transition: none;
+    transition: none;
+  }
+  .nav-tabs-responsive > li.next > a .text, .nav-tabs-responsive > li.prev > a .text {
+    display: none;
+  }
+  .nav-tabs-responsive > li.next > a:after, .nav-tabs-responsive > li.next > a:after, .nav-tabs-responsive > li.prev > a:after, .nav-tabs-responsive > li.prev > a:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .nav-tabs-responsive > li.prev > a:after {
+    content: "\e079";
+  }
+  .nav-tabs-responsive > li.next > a:after {
+    content: "\e080";
+  }
+  .nav-tabs-responsive > li.dropdown > a > .caret {
+    display: none;
+  }
+  .nav-tabs-responsive > li.dropdown > a:after {
+    content: "\e114";
+  }
+  .nav-tabs-responsive > li.dropdown.active > a:after {
+    display: none;
+  }
+  .nav-tabs-responsive > li.dropdown.active > a > .caret {
+    display: inline-block;
+  }
+  .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-left {
+    left: 0;
+    right: auto;
+  }
+  .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-center {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-right {
+    left: auto;
+    right: 0;
+  }
+}
+/**
+ * Demo Styles
+ */
+.wrapper {
+  padding: 15px 0;
+}
+
+.bs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 479px) {
+  #narrow-browser-alert {
+    display: none;
+  }
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img alt="" src="images/Mahadiscom_Logo.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav main-nav">
+                    <li><a href="tableLayout.html">Home</a></li>
+                    <li class="active"><a href="Tenders.html">Tenders</a></li>
+                    <li><a href="#">Bids</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+                <form class="navbar-form pull-right col-sm-4">
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="Search" />
+                        <span class="input-group-btn">
+               <button type="submit" class="btn btn-default">Search</button>
+           </span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <ul class="nav navbar-nav navbar-right sidenav">
+
+                        <li><a href="#"><span class="glyphicon glyphicon-earphone"></span> Contact Us</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-map-marker"></span> Site Map</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div id="background-carousel">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active" style="background-image:url('images/slider-1.jpg')"></div>
+                <div class="item" style="background-image:url('images/slider-3.jpg')"></div>
+                <div class="item" style="background-image:url('images/slider-2.jpg')"></div>
+            </div>
+        </div>
+    </div>
+    <div id="content-wrapper">
+        <!-- PAGE CONTENT -->
+        <div class="container-fluid" style="margin-bottom:20px;">
+
+            <div class="clearfix"></div>
+
+        
+    
+    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+      <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#TenderListing" id="TenderListing-tab" role="tab" data-toggle="tab" aria-controls="TenderListing-tab" aria-expanded="true">
+            <span class="text">Tender Listing</span>
+          </a>
+        </li>
+        <li role="presentation" class="next">
+          <a href="#TenderCommittee" role="tab" id="TenderCommittee-tab" data-toggle="tab" aria-controls="TenderCommittee">
+            <span class="text">Tender Committee</span>
+          </a>
+        </li>
+        
+        <li role="presentation">
+          <a href="#TechnicalEvaluation" role="tab" id="TechnicalEvaluation-tab" data-toggle="tab" aria-controls="TechnicalEvaluation">
+            <span class="text">Technical Evaluation</span>
+          </a>
+        </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="TenderListing" aria-labelledby="TenderListing-tab">
+          <h3 class="col-sm-12">Public Tenders</h3>
+                                <div class="col-sm-12 mobileNoPadding">
+                                <table class="TenderDetailsTable" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div style="width:250px;">Tenders Available</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a class="tenderdetailsTab" data-toggle="tab" href="#TenderDetails">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a class="tenderdetailsTab" data-toggle="tab" href="#TenderDetails">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">GST Identification </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st November 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender2203</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a href="">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">GST Identification </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st November 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender2203</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender1103</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">GST Identification </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st November 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender2203</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender1103</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">GST Identification </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st November 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender2203</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender1103</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">GST Identification </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st November 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender2203</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender1103</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">GST Identification </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st November 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="TenderCommittee" aria-labelledby="TenderCommittee-tab">
+          <div class="col-sm-12 mobileNoPadding">
+                                <table class="TenderDetailsTable" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div style="width:250px;">Tenders Available</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a class="tenderdetailsTab" data-toggle="tab" href="#TenderDetails">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Status</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Define/Edit Committee</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><button type="button" class="btn btn-info Edit-Committee-button"><span class="glyphicon glyphicon-edit"></span></button></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a class="tenderdetailsTab" data-toggle="tab" href="#TenderDetails">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Status</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Define/Edit Committee</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><button type="button" class="btn btn-info Edit-Committee-button"><span class="glyphicon glyphicon-edit"></span></button></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a class="tenderdetailsTab" data-toggle="tab" href="#TenderDetails">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Status</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Define/Edit Committee</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><button type="button" class="btn btn-info Edit-Committee-button"><span class="glyphicon glyphicon-edit"></span></button></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              </div>
+        </div>
+        
+        <div role="tabpanel" class="tab-pane fade" id="TechnicalEvaluation" aria-labelledby="TechnicalEvaluation">
+         <div class="col-sm-12 mobileNoPadding">
+                                <table class="TenderDetailsTable" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div style="width:250px;">Tenders Available</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a class="tenderdetailsTab" data-toggle="tab" href="#TenderDetails">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a class="tenderdetailsTab" data-toggle="tab" href="#TenderDetails">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">GST Identification </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st November 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">TestTender2203</label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">Browser Requirements </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="Row-card">
+                                                    <label class="col-sm-2 col-xs-6">Tender No.</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small"><a href="">TestTender1103</a></label>
+                                                    <label class="col-sm-2 col-xs-6">Description</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">GST Identification </label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Opening</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st November 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Sale Closing</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Submission Due </label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">21st October 2017</label>
+                                                    <label class="col-sm-2 col-xs-6">Tender Fee(Rs)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                    <label class="col-sm-2 col-xs-6">Download (Published Only)</label>
+                                                    <label class="col-sm-4 col-xs-6 text-small">20,00,000</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="js/tender.js"></script>
+<script>(function($) {
+
+	  'use strict';
+
+	  $(document).on('show.bs.tab', '.nav-tabs-responsive [data-toggle="tab"]', function(e) {
+	    var $target = $(e.target);
+	    var $tabs = $target.closest('.nav-tabs-responsive');
+	    var $current = $target.closest('li');
+	    var $parent = $current.closest('li.dropdown');
+			$current = $parent.length > 0 ? $parent : $current;
+	    var $next = $current.next();
+	    var $prev = $current.prev();
+	    var updateDropdownMenu = function($el, position){
+	      $el
+	      	.find('.dropdown-menu')
+	        .removeClass('pull-xs-left pull-xs-center pull-xs-right')
+	      	.addClass( 'pull-xs-' + position );
+	    };
+
+	    $tabs.find('>li').removeClass('next prev');
+	    $prev.addClass('prev');
+	    $next.addClass('next');
+	    
+	    updateDropdownMenu( $prev, 'left' );
+	    updateDropdownMenu( $current, 'center' );
+	    updateDropdownMenu( $next, 'right' );
+	  });
+
+	})(jQuery);</script>
+
+</html>
